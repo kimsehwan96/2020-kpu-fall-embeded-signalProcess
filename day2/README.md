@@ -123,3 +123,119 @@ plot(t, y3, '-b');
 * 또 헷갈린 것. a = 1:10 -> 1,2,3,4,5,6,7,8,9,10 의 행렬 
     * a = 1:0.1:10 -> 1에서 10까지 0.1 스텝의 단행열
 
+
+이번주 과제 결과
+
+1번 문제
+
+```matlab
+clc ;
+clear ;
+
+center_x = 5
+center_y = 10
+radius = 10;
+thetha = 0:0.1:2*pi;
+
+x_func = radius .* sin(thetha) + center_x ;
+y_func = radius .* cos(thetha) + center_y ;
+
+figure(1)
+plot(x_func, y_func);
+grid on;
+xlabel('X');
+ylabel('Y');
+title('Circle');
+
+% 연습1번 클리어
+```
+![1](./images/5.png)
+
+
+
+2번문제
+
+```matlab
+clear ;
+clc;
+
+tau = 1;
+width = 0.3;
+% 0~0.3 1 
+% 0.7 ~1 1
+%0.3 ~ 0.7 tau - width 가 기준이네
+% 시작부터 0.3 ~ 
+y = []
+x = 0:0.01:5;
+length(x)
+for idx = 1: length(x)
+    if mod(x(idx), tau) > width % over 0.3
+        if mod(x(idx), tau) < tau - width
+            y(idx) = 0;
+        else
+            y(idx) = 1;
+        end
+    else
+        y(idx) = 1;
+    end
+end
+
+figure(1)
+plot(x,y)
+grid on;
+xlabel('X');
+ylabel('Y');
+axis([0 2 -0 1.5]);
+
+```
+
+![3](./images/3.png)
+
+
+3번 연습 문제
+
+```matlab
+clear ;
+clc;
+
+tau = 1;
+width = 0.3;
+% 0~0.3 1 
+% 0.7 ~1 1
+%0.3 ~ 0.7 tau - width 가 기준이네
+% 시작부터 0.3 ~ 
+y = []
+x = 0:0.01:5;
+length(x)
+for idx = 1: length(x)
+    if mod(x(idx), tau) > width % over 0.3
+        if mod(x(idx), tau) < tau - width
+            y(idx) = 0;
+        else
+            y(idx) = 1;
+        end
+    else
+        y(idx) = 1;
+    end
+end
+
+y_2 = []
+
+for idx = 1: length(x)
+    if y(idx) == 0
+        y_2(idx) = cos(2*pi*5*x(idx));
+    else
+        y_2(idx) = cos(2*pi*5*x(idx) + pi);
+    end
+end
+
+figure(1)
+plot(x,y_2)
+grid on;
+xlabel('X');
+ylabel('Y');
+axis([0 2 0 1]);
+
+```
+
+![5](./images/5.png)
