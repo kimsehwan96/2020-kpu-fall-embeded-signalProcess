@@ -80,7 +80,7 @@ grid on;
 legend('Amp input', 'Amp output');
 ```
 
-![2](./images/1.png)
+![2](./images/2.png)
 
 
 * 느낀점
