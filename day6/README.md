@@ -74,7 +74,7 @@ x_t = tau * sinc((tau * t)/(2 * pi));
 
 * sinc 함수 생성 결과.
 
-![6](images/6.png)
+![6](images/6.jpeg)
 
 - 해당 sinc 함수의 FT 결과.
 
