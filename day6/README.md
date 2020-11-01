@@ -1,5 +1,7 @@
 # 결과 보고서 (Sampling)
 
+실습 1조 `오해찬, 김세환`
+
 
 ## 3.1 임펄스열 발생
 
@@ -115,7 +117,7 @@ x_t = tau * sinc((tau * t)/(2 * pi));
 
 
 
-## 3.4 시간영역과 주파수 영역에서의 표본화 비겨ㅛ
+## 3.4 시간영역과 주파수 영역에서의 표본화 비교
 
 - 실습 3.1 ~ 3.3의 그래프를 한 화면에 표시하고 시간 영역과 주파수 영역에서의 표본화 과정을 비교하라.
 
@@ -175,3 +177,74 @@ xlim([-30,30]);
 ![14](images/14.png)
 
 - 10Hz 이상으로 샘플링 했기 때문에 알리아싱이 발생하지 않았다.
+
+## LPF를  이용한 복원
+
+```matlab
+clear;
+clc;
+
+t1 = -5
+t2 = 5
+N = 4096
+f_s = 10
+
+tau = 20 * pi
+[impulse_t, impulse_p] = GenImpulse(t1, t2, f_s, N);
+t = impulse_t;
+x_t = tau * sinc((tau * t)/(2 * pi));
+Samplified_y = prod([x_t; impulse_p]);
+
+fc=8;
+[z, p, k] = buttap(5)
+[num, den] = zp2tf(z,p,k);
+[num, den] = lp2lp(num, den, 2*pi*fc);
+[num_d, den_d] = bilinear(num, den, 1/abs(t(2)-t(1)));
+
+y_out = filter(num_d, den_d, Samplified_y);
+
+
+
+[f0, X0] = myfun_SA(impulse_t, impulse_p);
+X0 = abs(X0);
+[f1, X1] = myfun_SA(t, Samplified_y);
+X1 = abs(X1);
+[f2, X2] = myfun_SA(t, y_out);
+X2 = abs(X2);
+
+figure (3)  
+subplot(2,2,1)
+  plot(t, Samplified_y);
+  xlabel('1[sec]');
+  ylabel('y(t)');
+  xlim([-1,1]);
+subplot(2,2,3)
+  plot(f1, X1);
+  xlabel('1[Hz]');
+  ylabel('|Y(f)|');
+  xlim([-30,30]);
+subplot(2,2,2)
+  plot(t, y_out);
+  xlabel('1[sec]');
+  ylabel('y(t)');
+  xlim([-1,1]);
+subplot(2,2,4)
+  plot(f2, X2);
+  xlabel('1[Hz]');
+  ylabel('|Y_{cut}(f)|');
+  xlim([-30,30]);
+```
+
+- 그림 10 (표본화 주파수 10, 컷오프 주파수 8 버터워스 필터를 이용한 복원)
+
+![15](images/15.png)
+
+
+- 그림 11 (표본화 주파수 15, 컷오프 주파수 8 버터워스 필터를 이용한 복원)
+
+![16](images/16.png)
+
+
+- 그림 12 (표본화 주파수 20, 컷오프 주파수 8 버터워스 필터를 이용한 복원)
+
+![17](images/17.png)

@@ -22,7 +22,6 @@ y_out = filter(num_d, den_d, Samplified_y);
 
 
 
-%Transforming!
 [f0, X0] = myfun_SA(impulse_t, impulse_p);
 X0 = abs(X0);
 [f1, X1] = myfun_SA(t, Samplified_y);
