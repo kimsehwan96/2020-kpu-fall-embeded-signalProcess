@@ -7,7 +7,7 @@
 
 * `t1 = -5`, `t2 = 5`, `fs = 20Hz`, `N = 4096` 일 때의 임펄스열 그래프.
 
-![1](images/1.png)
+![1](images/1.png){: width="75%" height="75%"}
 
 
 * 임펄스 발생 코드
@@ -54,11 +54,11 @@ n_range = T_s/(each_zero + 1);
 
 * 임펄스열 p(t)의 Fourier Transform 을 손으로 계산하라.
 
-![2](images/2.jpeg)
+![2](images/2.jpeg){: width="75%" height="75%"}
 
 * 임펄스열 p(t)의 크기 스펙트럼을 구하여 그래프에 표시하고 손으로 계산한 FT와 비교해라.
 
-![3](images/3.png)
+![3](images/3.png){: width="75%" height="75%"}
 
 - 그래프로 구한 크기 스펙트럼. 20Hz 마다 주파수 성분이 보이는 것을 확일 할 수 있다.
 
@@ -66,28 +66,28 @@ n_range = T_s/(each_zero + 1);
 
 ## 3.2 sinc 함수 발생
 
-![4](images/4.png)
+![4](images/4.png){: width="75%" height="75%"}
 
 ```matalb
 x_t = tau * sinc((tau * t)/(2 * pi));
 ```
 
-![5](images/5.png)
+![5](images/5.png){: width="75%" height="75%"}
 
 * sinc 함수 생성 결과.
 
-![6](images/6.jpeg)
+![6](images/6.jpeg){: width="75%" height="75%"}
 
 - 해당 sinc 함수의 FT 결과.
 
 * 신호 x(t)의 크기 스펙트럼을 matlab을 이용하여 그래프에 표시하고, 손으로 계산한 FT와 비교해라.
 
-![7](images/7.png)
+![7](images/7.png){: width="75%" height="75%"}
 
 * 손으로 구한 FT 결과 값과 비교해보면, sinc함수의 FT는 구형파 형태로 표현된다.
 * sinc 함수의 tau 값이 커지면, FT결과의 구형파의 폭은 줄어드는 반비례 관계를 갖고 있다. 
 
-![8](images/8.jpeg)
+![8](images/8.jpeg){: width="75%" height="75%"}
 
 * sinc 함수의 FT
     - 실습 예제에서의 `tau = 20 * pi` 이다.
@@ -99,17 +99,17 @@ x_t = tau * sinc((tau * t)/(2 * pi));
 
 - 앞서 발생한 임펄스열을 이용하여 sinc함수를 표본화 하고, 표본화 된 신호를 그래프에 표시해라.
 
-![9](images/9.png)
+![9](images/9.png){: width="75%" height="75%"}
 
 - 표본화된 신호 y(t)의 FT를 손으로 계산하라.
-![10](images/10.jpeg)
+![10](images/10.jpeg){: width="75%" height="75%"}
 
 원신호가 ws 주기로 반복되는 연속, 주기 신호로 나타난다.(실습 예제 10Hz)
 
 
 - 표본화 된 신호 y(t)의 크기 스펙트럼을 그래프에 표시하고, 이와 같은 스펙트럼이 나오는 이유를 설명하여라.
 
-![11](images/11.png)
+![11](images/11.png){: width="75%" height="75%"}
 
 - ws 의 간격 만큼 주기적으로 신호가 반복된다. 위 FT 손으로 계산한 그림에서
 - `X(w - kws)` 의 형태로 보이는 부분 때문에 `k = -무한 ~ 무한`의 구간에서 계속해서 신호가 나타나게 된다.
@@ -121,7 +121,7 @@ x_t = tau * sinc((tau * t)/(2 * pi));
 
 - 실습 3.1 ~ 3.3의 그래프를 한 화면에 표시하고 시간 영역과 주파수 영역에서의 표본화 과정을 비교하라.
 
-![12](images/12.png)
+![12](images/12.png){: width="75%" height="75%"}
 
 
 ```matlab
@@ -168,13 +168,13 @@ xlim([-30,30]);
 
 `fs = {10Hz, 15Hz}`
 
-![13](images/13.png)
+![13](images/13.png){: width="75%" height="75%"}
 
 *fs = 10Hz*
 
 - FT된 sinc함수의 최대 주파수(B)가 5Hz였으므로, 샘플링 할 수 있는 최소 주파수는 10Hz보다 커야한다. 10Hz에서는 알리아싱이 발생한다.
 
-![14](images/14.png)
+![14](images/14.png){: width="75%" height="75%"}
 
 - 10Hz 이상으로 샘플링 했기 때문에 알리아싱이 발생하지 않았다.
 
@@ -237,14 +237,14 @@ subplot(2,2,4)
 
 - 그림 10 (표본화 주파수 10, 컷오프 주파수 8 버터워스 필터를 이용한 복원)
 
-![15](images/15.png)
+![15](images/15.png){: width="75%" height="75%"}
 
 
 - 그림 11 (표본화 주파수 15, 컷오프 주파수 8 버터워스 필터를 이용한 복원)
 
-![16](images/16.png)
+![16](images/16.png){: width="75%" height="75%"}
 
 
 - 그림 12 (표본화 주파수 20, 컷오프 주파수 8 버터워스 필터를 이용한 복원)
 
-![17](images/17.png)
+![17](images/17.png){: width="75%" height="75%"}
