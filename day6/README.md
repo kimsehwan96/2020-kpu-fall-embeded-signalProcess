@@ -89,8 +89,89 @@ x_t = tau * sinc((tau * t)/(2 * pi));
 
 * sinc 함수의 FT
     - 실습 예제에서의 `tau = 20 * pi` 이다.
-    - 구형파의 주기는 W 값에 따라서 결정되는데, `W = tau/ 2 * pi` 이므로
-    - 실습 예제에서 W = 10Hz 로 나타난다. 
-    - 즉 가장 높은 주파수 B = 10Hz 이다.
+    - 구형파의 스펙트럼은 W 값에 따라서 결정되는데, `W = tau/ 2 * pi` 이므로
+    - 실습 예제에서 2B = 10Hz 로 나타난다. 
+    - 즉 가장 높은 주파수 B = 5Hz 이다.
 
 ## 3.3 표본화
+
+- 앞서 발생한 임펄스열을 이용하여 sinc함수를 표본화 하고, 표본화 된 신호를 그래프에 표시해라.
+
+![9](images/9.png)
+
+- 표본화된 신호 y(t)의 FT를 손으로 계산하라.
+![10](images/10.jpeg)
+
+원신호가 ws 주기로 반복되는 연속, 주기 신호로 나타난다.(실습 예제 10Hz)
+
+
+- 표본화 된 신호 y(t)의 크기 스펙트럼을 그래프에 표시하고, 이와 같은 스펙트럼이 나오는 이유를 설명하여라.
+
+![11](images/11.png)
+
+- ws 의 간격 만큼 주기적으로 신호가 반복된다. 위 FT 손으로 계산한 그림에서
+- `X(w - kws)` 의 형태로 보이는 부분 때문에 `k = -무한 ~ 무한`의 구간에서 계속해서 신호가 나타나게 된다.
+- 즉 샘플링한 신호를 FT하게 되면, 원신호의 스펙트럼이 계속해서 반복되는 형태가 나타난다.
+
+
+
+## 3.4 시간영역과 주파수 영역에서의 표본화 비겨ㅛ
+
+- 실습 3.1 ~ 3.3의 그래프를 한 화면에 표시하고 시간 영역과 주파수 영역에서의 표본화 과정을 비교하라.
+
+![12](images/12.png)
+
+
+```matlab
+clear;
+clc;
+
+t1 = -5
+t2 = 5
+N = 4096
+f_s = 20
+
+tau = 20 * pi
+[impulse_t, impulse_p] = GenImpulse(t1, t2, f_s, N);
+t = impulse_t;
+x_t = tau * sinc((tau * t)/(2 * pi));
+Samplified_y = prod([x_t; impulse_p]);
+
+%for picuture 7
+figure(1)
+subplot(3,2,1)
+plot(t, impulse_p);
+xlim([-1,1]);
+subplot(3,2,3)
+plot(t, x_t);
+xlim([-1,1]);
+subplot(3,2,5)
+plot(t, Samplified_y);
+xlim([-1,1]);
+[t_f0 , X] = myfun_SA(t, impulse_p);
+[t_f0, X_sinc] = myfun_SA(t, x_t);
+[t_f0, X_samp] = myfun_SA(t,Samplified_y);
+subplot(3,2,2)
+plot(t_f0, abs(X));
+xlim([-30,30]);
+subplot(3,2,4)
+plot(t_f0, abs(X_sinc));
+xlim([-30,30]);
+subplot(3,2,6)
+plot(t_f0, abs(X_samp));
+xlim([-30,30]);
+```
+
+- 표본화 주파수를 다음과 같이 바꿔가며 3.1 ~ 3.3을 반복하여 Nyquist sampling rate에 대해 설명하라.
+
+`fs = {10Hz, 15Hz}`
+
+![13](images/13.png)
+
+*fs = 10Hz*
+
+- FT된 sinc함수의 최대 주파수(B)가 5Hz였으므로, 샘플링 할 수 있는 최소 주파수는 10Hz보다 커야한다. 10Hz에서는 알리아싱이 발생한다.
+
+![14](images/14.png)
+
+- 10Hz 이상으로 샘플링 했기 때문에 알리아싱이 발생하지 않았다.
