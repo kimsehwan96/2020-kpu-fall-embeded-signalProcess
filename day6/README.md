@@ -85,7 +85,7 @@ x_t = tau * sinc((tau * t)/(2 * pi));
 * 손으로 구한 FT 결과 값과 비교해보면, sinc함수의 FT는 구형파 형태로 표현된다.
 * sinc 함수의 tau 값이 커지면, FT결과의 구형파의 폭은 줄어드는 반비례 관계를 갖고 있다. 
 
-![8](images/8.png)
+![8](images/8.jpeg)
 
 * sinc 함수의 FT
     - 실습 예제에서의 `tau = 20 * pi` 이다.
