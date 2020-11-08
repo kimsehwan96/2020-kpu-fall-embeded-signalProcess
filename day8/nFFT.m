@@ -8,13 +8,13 @@ cnt = 0;
 
 x_reIndex = reIndex(x_n,N);
 
-    for calc_flag = 1:1:N_div
+    for calc_flag = 1:1:N_div % 2^n -> ??? ?? ?
     
-        cnt = cnt + 1;
-        cnt_W = 0;
+        cnt = cnt + 1; %(for loop count)
+        cnt_W = 0; % count for ????
         cnt_index = 1;
         calc_state = N/(2^cnt);
-        W = exp(-1i*(2*pi/(2^cnt)));
+        W = exp(-1i*(2*pi/(2^cnt))); % ?? ??
 
         st = 1; 
         ed = (2^cnt)/2;

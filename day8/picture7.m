@@ -1,4 +1,4 @@
-clear
+sclear
 clc
 
 N = 64;
@@ -8,7 +8,7 @@ x_n = cos(2*pi*f*n);
 
 [f_hat,Xk] = nFFT(x_n,N);
 
-Xk_f_hat = circshift(Xk,N/2);
+Xk_f_hat = circshift(Xk,N/2); % 범위 설정.
 
 figure(1)
 subplot(2,1,1)
