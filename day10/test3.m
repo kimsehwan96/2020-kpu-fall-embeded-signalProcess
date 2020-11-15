@@ -29,7 +29,7 @@ W_p3 = exp(j.*W) - z_p(3,1);
 
 H_W = abs(W_z ./ (W_p1 .* W_p2 .* W_p3));
 
-figure(5)
+figure(1)
 plot(real_p,imag_p,'xk','MarkerSize',15)
 xlim([-1 1]);
 ylim([-1 1]);
@@ -44,7 +44,7 @@ ylabel("Imag(z)");
 axis equal
 grid on;
 
-figure(6)
+figure(2)
 h_n_disp = circshift(h_n,1);
 h_n_disp(1,1) = 0;
 stem(n,h_n_disp,'k','LineWidth',2,'MarkerFace','k');
@@ -56,7 +56,7 @@ set(gca,'Xtick',[0:2:20])
 set(gca,'Ytick',[-0.6:0.2:1])    
 grid on
 
-figure(7)
+figure(3)
 plot(W,H_W,'k','LineWidth',2)
 xlabel("Frequency W[rad]");
 ylabel("|H(W)|");
