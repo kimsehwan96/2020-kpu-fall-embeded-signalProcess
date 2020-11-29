@@ -2,7 +2,7 @@
 
 #### 실습 1번
 
-```m
+```matlab
 clc
 clear
 
@@ -190,7 +190,7 @@ Continuous-time transfer function.
 
 #### 실습 2번
 
-```m
+```matlab
 clc
 clear
 
@@ -245,7 +245,7 @@ legend("Analog BPF","Digital BPF","Analog HPF","Digital HPF");
 
 #### 실습 3번
 
-```m
+```matlab
 clc
 clear
 N = 7; %7차 butterworth 필터
