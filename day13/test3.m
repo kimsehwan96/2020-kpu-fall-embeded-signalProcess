@@ -22,6 +22,7 @@ H_f = 3500/(fs/2);
 [BPF3_n,BPF3_d] = butter(12,B_f3,'bandpass');
 [HPF_n,HPF_d] = butter(10,H_f,'high');
 
+
 audio_LPF = filter(LPF_n,LPF_d,audio_sig);
 audio_BPF1 = filter(BPF1_n,BPF1_d,audio_sig);
 audio_BPF2 = filter(BPF2_n,BPF2_d,audio_sig);
@@ -34,7 +35,7 @@ audio_HPF = filter(HPF_n,HPF_d,audio_sig);
 [audio_B3_f0,audio_B3_F] = myfun_SA(t,audio_BPF3);
 [audio_H_f0,audio_H_F] = myfun_SA(t,audio_HPF);
 
-c1 = 1;c2 = 5;c3 = 4;c4 = 2;c5 = 1;w = 1;
+c1 = 1;c2 = 5;c3 = 4;c4 = 2;c5 = 1;w = 1; %채널 이득 적용
 y0 = c1*audio_LPF + c2*audio_BPF1 + c3*audio_BPF2 + c4*audio_BPF3 + c5*audio_HPF;
 x = audio_sig;
 

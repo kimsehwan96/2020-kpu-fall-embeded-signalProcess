@@ -1,10 +1,12 @@
 clear
 clc
 
-[audio_sig,audio_fs] = audioread('Audio_Pop01_15sec.wav');
-L = length(audio_sig);
+% 오디오 신호를 읽어들임
+[audio_sig , audio_fs] = audioread('Audio_Pop01_15sec.wav');
+L = length(audio_sig); %신호의 길이
 t = linspace(0,15,L);
 
+%크기 스펙트럼 분석
 [audio_f0,audio_F] = myfun_SA(t,audio_sig);
 
 figure(1)
@@ -23,4 +25,5 @@ xlabel("Frequency [Hz]");
 ylabel("|X(f)|");
 grid on;
 
+%오디오 재생
 sound(audio_sig,audio_fs)
